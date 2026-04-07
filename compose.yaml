@@ -1,0 +1,21 @@
+include:
+  - services/wiki/compose.yaml
+  - services/tailscale/compose.yaml
+
+services:
+  wiki:
+    extends:
+      file: common.yaml
+      service: wiki
+    env_file:
+      - compose.env
+  tailscale:
+    extends:
+      file: common.yaml
+      service: tailscale
+    env_file:
+      - compose.env
+
+volumes:
+  wiki_data:
+  tailscale_data:

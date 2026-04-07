@@ -1,0 +1,19 @@
+services:
+  common:
+    env_file:
+      - common.env
+    restart: on-failure
+  wiki:
+    extends: common
+    network_mode: service:tailscale
+    depends_on:
+      tailscale:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - ./config/wiki/config.yaml:/wiki/data/config.yaml
+  tailscale:
+    extends: common
+    volumes:
+      - ./config/tailscale/ts-serve.json:/ts-serve.json
+      - ./data/tmp:/tmp

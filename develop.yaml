@@ -1,0 +1,21 @@
+include:
+  - services/wiki/develop.yaml
+  - services/tailscale/develop.yaml
+
+services:
+  wiki:
+    extends:
+      file: common.yaml
+      service: wiki
+    env_file:
+      - develop.env
+    volumes:
+      - ./data/wiki:/wiki/data
+  tailscale:
+    extends:
+      file: common.yaml
+      service: tailscale
+    env_file:
+      - develop.env
+    volumes:
+      - ./data/tailscale:/var/lib/tailscale

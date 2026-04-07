@@ -1,0 +1,12 @@
+services:
+  tailscale:
+    extends:
+      file: common.yaml
+      service: tailscale
+    env_file:
+      - compose.env
+    volumes:
+      - tailscale_data:/var/lib/tailscale
+
+volumes:
+  tailscale_data:

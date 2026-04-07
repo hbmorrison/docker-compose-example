@@ -1,0 +1,8 @@
+services:
+  wiki:
+    image: leomoonstudios/wiki-go${WIKI_SHA:-${WIKI_TAG:?}}
+    container_name: ${COMPOSE_PROJECT_NAME}-wiki
+    env_file:
+      - common.env
+    volumes:
+      - ./config/config.yaml:/wiki/data/config.yaml

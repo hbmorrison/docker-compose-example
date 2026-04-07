@@ -1,0 +1,17 @@
+[Unit]
+Description=Docker Compose Example Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+User=<username>
+WorkingDirectory=<home directory or app directory somewhere>
+ExecStart=/usr/bin/docker compose up
+ExecStop=/usr/bin/docker compose down
+TimeoutStartSec=0
+Restart=on-failure
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
