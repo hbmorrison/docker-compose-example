@@ -16,7 +16,8 @@ tags
 \.netrwhist
 
 ## Application
-/.env
+/.env.secret
 /data/**
+/components/**
 /config/**
 /tmp/**
