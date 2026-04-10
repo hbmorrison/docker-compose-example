@@ -1,0 +1,14 @@
+# Production service configuration.
+
+services:
+  tailscale:
+    extends:
+      file: common.yml
+      service: tailscale
+    env_file:
+      - env.prod
+    volumes:
+      - tailscale_data:/var/lib/tailscale
+
+volumes:
+  tailscale_data:

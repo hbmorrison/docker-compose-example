@@ -1,0 +1,12 @@
+# Development service configuration.
+
+services:
+  tailscale:
+    image: tailscale/tailscale:latest
+    extends:
+      file: common.yml
+      service: tailscale
+    env_file:
+      - env.dev
+    volumes:
+      - ./data:/var/lib/tailscale
